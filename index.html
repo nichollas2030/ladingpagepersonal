@@ -213,7 +213,7 @@
         margin-right: auto;
       }
 
-      /* Botão Crítico */
+      /* Botão Crítico - Contrast Fix */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -232,12 +232,21 @@
       }
       .btn-primary {
         background: var(--white);
-        color: var(--primary);
+        color: #d63384;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
       .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: #d63384;
+        border: 2px solid #d63384;
+      }
+      .btn-secondary:hover {
+        background: #d63384;
+        color: var(--white);
       }
 
       /* Grid Crítico */
@@ -504,12 +513,22 @@
         </div>
       </section>
 
-      <!-- About Section -->
+      /* About Section */
       <section id="sobre" class="section">
         <div class="container">
           <div class="grid grid-1">
             <div>
               <h2 class="section-title">Olá, Eu Sou a Marina Silva</h2>
+              <h3
+                style="
+                  font-size: var(--fs-lg);
+                  color: var(--primary);
+                  margin-bottom: var(--sp-md);
+                  text-align: center;
+                "
+              >
+                Personal Trainer Especializada em Treinamento Feminino
+              </h3>
               <p
                 style="
                   font-size: var(--fs-base);
@@ -573,6 +592,16 @@
       >
         <div class="container">
           <h2 class="section-title">Meus Serviços Especializados</h2>
+          <h3
+            style="
+              font-size: var(--fs-xl);
+              text-align: center;
+              margin-bottom: var(--sp-xl);
+              color: var(--light);
+            "
+          >
+            Metodologia Personalizada Para Cada Mulher
+          </h3>
           <div class="grid grid-1">
             <div class="card">
               <div class="card-icon">💪</div>
@@ -582,16 +611,7 @@
                 objetivos e limitações. Acompanhamento completo e resultados
                 garantidos.
               </p>
-              <a
-                href="#contato"
-                class="btn"
-                style="
-                  background: transparent;
-                  color: var(--primary);
-                  border: 2px solid var(--primary);
-                "
-                >Saiba Mais</a
-              >
+              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
             </div>
 
             <div class="card">
@@ -601,35 +621,17 @@
                 Divida os custos e multiplique a motivação! Perfeito para
                 amigas, irmãs ou mãe e filha que querem se exercitar juntas.
               </p>
-              <a
-                href="#contato"
-                class="btn"
-                style="
-                  background: transparent;
-                  color: var(--primary);
-                  border: 2px solid var(--primary);
-                "
-                >Saiba Mais</a
-              >
+              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
             </div>
 
             <div class="card">
               <div class="card-icon">🏠</div>
-              <h3>Personal Training Domiciliar</h3>
+              <h4>Personal Training Domiciliar</h4>
               <p>
                 Treine no conforto da sua casa! Levo todos os equipamentos
                 necessários e adapto o treino ao seu espaço disponível.
               </p>
-              <a
-                href="#contato"
-                class="btn"
-                style="
-                  background: transparent;
-                  color: var(--primary);
-                  border: 2px solid var(--primary);
-                "
-                >Saiba Mais</a
-              >
+              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
             </div>
           </div>
         </div>
@@ -789,6 +791,7 @@
             <form id="contact-form">
               <div style="margin-bottom: var(--sp-md); text-align: left">
                 <label
+                  for="nome"
                   style="
                     display: block;
                     margin-bottom: var(--sp-xs);
@@ -799,8 +802,10 @@
                 >
                 <input
                   type="text"
+                  id="nome"
                   name="nome"
                   required
+                  aria-describedby="nome-help"
                   style="
                     width: 100%;
                     padding: var(--sp-sm);
@@ -813,6 +818,7 @@
 
               <div style="margin-bottom: var(--sp-md); text-align: left">
                 <label
+                  for="telefone"
                   style="
                     display: block;
                     margin-bottom: var(--sp-xs);
@@ -823,8 +829,11 @@
                 >
                 <input
                   type="tel"
+                  id="telefone"
                   name="telefone"
                   required
+                  aria-describedby="tel-help"
+                  placeholder="(11) 99999-9999"
                   style="
                     width: 100%;
                     padding: var(--sp-sm);
@@ -837,6 +846,7 @@
 
               <div style="margin-bottom: var(--sp-md); text-align: left">
                 <label
+                  for="email"
                   style="
                     display: block;
                     margin-bottom: var(--sp-xs);
@@ -847,8 +857,11 @@
                 >
                 <input
                   type="email"
+                  id="email"
                   name="email"
                   required
+                  aria-describedby="email-help"
+                  placeholder="seuemail@exemplo.com"
                   style="
                     width: 100%;
                     padding: var(--sp-sm);
@@ -963,85 +976,111 @@
 
     <!-- Minimal JavaScript for Performance -->
     <script>
-      // Lazy load non-critical CSS
-      function loadCSS(href) {
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = href;
-        document.head.appendChild(link);
-      }
+      // Minimal optimized JavaScript
+      (function () {
+        // Critical performance optimizations
+        const criticalTasks = {
+          // Debounced scroll handler
+          scroll: null,
+          // Form handler
+          form: null,
+          // Animation observer
+          observer: null,
+        };
 
-      // Load non-critical styles after page load
-      window.addEventListener("load", function () {
-        // Add any additional styling here if needed
-      });
+        // Defer non-critical JavaScript
+        function deferredInit() {
+          // Form submission - Critical UX
+          const form = document.getElementById("contact-form");
+          if (form) {
+            form.addEventListener("submit", function (e) {
+              e.preventDefault();
+              const formData = new FormData(this);
+              const dados = {
+                nome: formData.get("nome"),
+                telefone: formData.get("telefone"),
+                email: formData.get("email"),
+              };
 
-      // Form submission
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          const formData = new FormData(this);
-          const nome = formData.get("nome");
-          const telefone = formData.get("telefone");
-          const email = formData.get("email");
-
-          const mensagem = `Olá Marina! Gostaria de agendar minha aula experimental gratuita!
+              const mensagem = `Olá Marina! Gostaria de agendar minha aula experimental gratuita!
 
 *Dados:*
-📝 Nome: ${nome}
-📱 WhatsApp: ${telefone}
-📧 Email: ${email}
+📝 Nome: ${dados.nome}
+📱 WhatsApp: ${dados.telefone}
+📧 Email: ${dados.email}
 
 Aguardo seu contato!`;
 
-          const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(
-            mensagem
-          )}`;
-          window.open(whatsappUrl, "_blank");
-          this.reset();
-          alert(
-            "Redirecionando para WhatsApp! Aguarde nosso contato em breve."
-          );
-        });
+              const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(
+                mensagem
+              )}`;
+              window.open(whatsappUrl, "_blank");
+              this.reset();
 
-      // Smooth scroll for internal links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
+              // User feedback
+              const button = this.querySelector('button[type="submit"]');
+              const originalText = button.textContent;
+              button.textContent = "✅ Enviado! Redirecionando...";
+              button.disabled = true;
+
+              setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+              }, 3000);
             });
           }
-        });
-      });
 
-      // Intersection Observer for animations (performance optimized)
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+          // Smooth scroll - Performance optimized
+          document.addEventListener("click", function (e) {
+            const link = e.target.closest('a[href^="#"]');
+            if (link) {
+              e.preventDefault();
+              const target = document.querySelector(link.getAttribute("href"));
+              if (target) {
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            }
+          });
 
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-            observer.unobserve(entry.target);
+          // Intersection Observer - Memory efficient
+          if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+              function (entries) {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const el = entry.target;
+                    el.style.opacity = "1";
+                    el.style.transform = "translateY(0)";
+                    observer.unobserve(el);
+                  }
+                });
+              },
+              {
+                threshold: 0.1,
+                rootMargin: "0px 0px -30px 0px",
+              }
+            );
+
+            // Animate cards
+            document.querySelectorAll(".card, .stat-item").forEach((el) => {
+              el.style.opacity = "0";
+              el.style.transform = "translateY(20px)";
+              el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+              observer.observe(el);
+            });
           }
-        });
-      }, observerOptions);
+        }
 
-      // Observe cards for animation
-      document.querySelectorAll(".card, .stat-item").forEach((el) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-        observer.observe(el);
-      });
+        // Load after critical rendering
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", deferredInit);
+        } else {
+          deferredInit();
+        }
+      })();
     </script>
   </body>
 </html>
