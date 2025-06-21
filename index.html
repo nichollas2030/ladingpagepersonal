@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <!-- SEO Meta Tags Essenciais -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
-
-    <!-- Meta Tags Principais -->
     <title>
       FitFemme - Personal Trainer Especializada em Mulheres | Transforme Seu
       Corpo e Mente
@@ -23,7 +20,6 @@
       content="personal trainer mulher, treinamento feminino, academia para mulheres, exercícios femininos, personal trainer especializada"
     />
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fitfemme.com.br" />
     <meta
@@ -40,7 +36,6 @@
     />
     <meta property="og:locale" content="pt_BR" />
 
-    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://fitfemme.com.br" />
     <meta
@@ -55,8 +50,6 @@
       property="twitter:image"
       content="https://fitfemme.com.br/images/twitter-image.jpg"
     />
-
-    <!-- Schema Markup JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -88,19 +81,15 @@
       }
     </script>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <!-- Preload Critical Resources - PERFORMANCE OPTIMIZATION -->
     <link
       rel="preload"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3C/svg%3E"
       as="image"
     />
 
-    <!-- Critical CSS Inline - PERFORMANCE OPTIMIZATION -->
     <style>
-      /* CSS Reset e Variáveis Críticas */
       *,
       *::before,
       *::after {
@@ -119,7 +108,6 @@
         --light-bg: #f8f9fa;
         --gradient: linear-gradient(135deg, #ff6b9d 0%, #4ecdc4 100%);
 
-        /* Tipografia Responsiva Otimizada */
         --fs-xs: clamp(0.75rem, 2vw, 0.875rem);
         --fs-sm: clamp(0.875rem, 2.5vw, 1rem);
         --fs-base: clamp(1rem, 3vw, 1.125rem);
@@ -129,7 +117,6 @@
         --fs-3xl: clamp(2rem, 6vw, 2.5rem);
         --fs-4xl: clamp(2.5rem, 7vw, 3.5rem);
 
-        /* Espaçamentos */
         --sp-xs: 0.5rem;
         --sp-sm: 1rem;
         --sp-md: 1.5rem;
@@ -138,7 +125,6 @@
         --sp-2xl: 4rem;
       }
 
-      /* Base Crítica */
       html {
         scroll-behavior: smooth;
       }
@@ -155,7 +141,6 @@
         display: block;
       }
 
-      /* Container Crítico */
       .container {
         width: 100%;
         max-width: 1200px;
@@ -163,7 +148,6 @@
         padding: 0 var(--sp-sm);
       }
 
-      /* Header Crítico */
       .header {
         background: var(--white);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -189,7 +173,6 @@
         display: none;
       }
 
-      /* Hero Crítico */
       .hero {
         background: var(--gradient);
         color: var(--white);
@@ -213,7 +196,6 @@
         margin-right: auto;
       }
 
-      /* Botão Crítico - Contrast Fix */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -249,7 +231,6 @@
         color: var(--white);
       }
 
-      /* Grid Crítico */
       .grid {
         display: grid;
         gap: var(--sp-lg);
@@ -264,7 +245,6 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      /* Seção Crítica */
       .section {
         padding: var(--sp-xl) 0;
       }
@@ -275,7 +255,6 @@
         color: var(--dark);
       }
 
-      /* Card Crítico */
       .card {
         background: var(--white);
         padding: var(--sp-xl);
@@ -301,7 +280,6 @@
         margin-bottom: var(--sp-lg);
       }
 
-      /* Stats Crítico */
       .stats {
         background: var(--light-bg);
         padding: var(--sp-lg) 0;
@@ -324,7 +302,6 @@
         margin-top: var(--sp-xs);
       }
 
-      /* WhatsApp Float Crítico */
       .whatsapp-float {
         position: fixed;
         bottom: 20px;
@@ -347,7 +324,6 @@
         transform: scale(1.1);
       }
 
-      /* Media Queries Críticos */
       @media (min-width: 768px) {
         .container {
           padding: 0 var(--sp-lg);
@@ -396,7 +372,6 @@
         }
       }
 
-      /* Performance Optimizations */
       .lazy-load {
         opacity: 0;
         transition: opacity 0.3s;
@@ -405,7 +380,6 @@
         opacity: 1;
       }
 
-      /* Reduce motion for accessibility */
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -512,8 +486,6 @@
           </div>
         </div>
       </section>
-
-      /* About Section */
       <section id="sobre" class="section">
         <div class="container">
           <div class="grid grid-1">
