@@ -88,569 +88,234 @@
       }
     </script>
 
-    <!-- Preload Critical Resources -->
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      as="style"
-    />
-    <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      as="style"
-    />
-
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
+    <!-- Preload Critical Resources - PERFORMANCE OPTIMIZATION -->
+    <link
+      rel="preload"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3C/svg%3E"
+      as="image"
+    />
+
+    <!-- Critical CSS Inline - PERFORMANCE OPTIMIZATION -->
     <style>
-      /* CSS Reset e Variáveis */
-      * {
+      /* CSS Reset e Variáveis Críticas */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
       }
 
       :root {
-        /* Paleta de Cores Otimizada */
-        --primary-color: #ff6b9d;
-        --secondary-color: #4ecdc4;
-        --accent-color: #45b7d1;
-        --text-dark: #2c3e50;
-        --text-light: #7f8c8d;
+        --primary: #ff6b9d;
+        --secondary: #4ecdc4;
+        --accent: #45b7d1;
+        --dark: #2c3e50;
+        --light: #7f8c8d;
         --white: #ffffff;
         --light-bg: #f8f9fa;
-        --gradient-primary: linear-gradient(135deg, #ff6b9d 0%, #4ecdc4 100%);
-        --gradient-secondary: linear-gradient(135deg, #45b7d1 0%, #96ceb4 100%);
+        --gradient: linear-gradient(135deg, #ff6b9d 0%, #4ecdc4 100%);
 
-        /* Tipografia Responsiva */
-        --font-size-xs: clamp(0.75rem, 2vw, 0.875rem);
-        --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);
-        --font-size-base: clamp(1rem, 3vw, 1.125rem);
-        --font-size-lg: clamp(1.125rem, 3.5vw, 1.25rem);
-        --font-size-xl: clamp(1.25rem, 4vw, 1.5rem);
-        --font-size-2xl: clamp(1.5rem, 5vw, 2rem);
-        --font-size-3xl: clamp(2rem, 6vw, 2.5rem);
-        --font-size-4xl: clamp(2.5rem, 7vw, 3.5rem);
+        /* Tipografia Responsiva Otimizada */
+        --fs-xs: clamp(0.75rem, 2vw, 0.875rem);
+        --fs-sm: clamp(0.875rem, 2.5vw, 1rem);
+        --fs-base: clamp(1rem, 3vw, 1.125rem);
+        --fs-lg: clamp(1.125rem, 3.5vw, 1.25rem);
+        --fs-xl: clamp(1.25rem, 4vw, 1.5rem);
+        --fs-2xl: clamp(1.5rem, 5vw, 2rem);
+        --fs-3xl: clamp(2rem, 6vw, 2.5rem);
+        --fs-4xl: clamp(2.5rem, 7vw, 3.5rem);
 
         /* Espaçamentos */
-        --spacing-xs: 0.5rem;
-        --spacing-sm: 1rem;
-        --spacing-md: 1.5rem;
-        --spacing-lg: 2rem;
-        --spacing-xl: 3rem;
-        --spacing-2xl: 4rem;
-
-        /* Sombras */
-        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-
-        /* Bordas */
-        --border-radius-sm: 0.375rem;
-        --border-radius-md: 0.5rem;
-        --border-radius-lg: 0.75rem;
-        --border-radius-xl: 1rem;
+        --sp-xs: 0.5rem;
+        --sp-sm: 1rem;
+        --sp-md: 1.5rem;
+        --sp-lg: 2rem;
+        --sp-xl: 3rem;
+        --sp-2xl: 4rem;
       }
 
-      /* Base Styles */
+      /* Base Crítica */
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: system-ui, -apple-system, sans-serif;
         line-height: 1.6;
-        color: var(--text-dark);
-        background-color: var(--white);
+        color: var(--dark);
+        background: var(--white);
         overflow-x: hidden;
       }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
 
-      /* Utilitários Responsivos */
+      /* Container Crítico */
       .container {
         width: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 var(--spacing-sm);
+        padding: 0 var(--sp-sm);
       }
 
-      .section {
-        padding: var(--spacing-xl) 0;
-      }
-
-      .text-center {
-        text-align: center;
-      }
-      .text-left {
-        text-align: left;
-      }
-
-      /* Botões */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--spacing-xs);
-        padding: var(--spacing-sm) var(--spacing-lg);
-        border: none;
-        border-radius: var(--border-radius-lg);
-        font-weight: 600;
-        font-size: var(--font-size-base);
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        min-height: 48px; /* Acessibilidade touch */
-        white-space: nowrap;
-      }
-
-      .btn-primary {
-        background: var(--gradient-primary);
-        color: var(--white);
-        box-shadow: var(--shadow-md);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .btn-secondary {
-        background: transparent;
-        color: var(--primary-color);
-        border: 2px solid var(--primary-color);
-      }
-
-      .btn-secondary:hover {
-        background: var(--primary-color);
-        color: var(--white);
-      }
-
-      /* Header */
+      /* Header Crítico */
       .header {
         background: var(--white);
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: 1000;
       }
-
       .nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--spacing-sm) 0;
+        padding: var(--sp-sm) 0;
       }
-
       .logo {
-        font-size: var(--font-size-xl);
+        font-size: var(--fs-xl);
         font-weight: 700;
-        color: var(--primary-color);
+        color: var(--primary);
         text-decoration: none;
       }
-
       .nav-menu {
         display: none;
       }
 
-      .header-cta {
-        display: none;
-      }
-
-      /* Hero Section */
+      /* Hero Crítico */
       .hero {
-        background: var(--gradient-primary);
+        background: var(--gradient);
         color: var(--white);
-        padding: calc(var(--spacing-2xl) + 60px) 0 var(--spacing-2xl);
+        padding: calc(var(--sp-2xl) + 60px) 0 var(--sp-2xl);
         text-align: center;
         position: relative;
         overflow: hidden;
       }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-        opacity: 0.3;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 2;
-      }
-
       .hero h1 {
-        font-size: var(--font-size-4xl);
+        font-size: var(--fs-4xl);
         font-weight: 700;
-        margin-bottom: var(--spacing-md);
+        margin-bottom: var(--sp-md);
         line-height: 1.2;
       }
-
       .hero .subtitle {
-        font-size: var(--font-size-lg);
-        margin-bottom: var(--spacing-xl);
+        font-size: var(--fs-lg);
+        margin-bottom: var(--sp-xl);
         opacity: 0.9;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
       }
 
-      .hero-image {
-        margin: var(--spacing-xl) 0;
-        border-radius: var(--border-radius-xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-xl);
-      }
-
-      .hero-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      /* Stats Section */
-      .stats {
-        background: var(--light-bg);
-        padding: var(--spacing-lg) 0;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-        text-align: center;
-      }
-
-      .stat-item {
-        background: var(--white);
-        padding: var(--spacing-lg);
-        border-radius: var(--border-radius-lg);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .stat-number {
-        font-size: var(--font-size-3xl);
-        font-weight: 700;
-        color: var(--primary-color);
-        display: block;
-      }
-
-      .stat-label {
-        font-size: var(--font-size-sm);
-        color: var(--text-light);
-        margin-top: var(--spacing-xs);
-      }
-
-      /* About Section */
-      .about {
-        background: var(--white);
-      }
-
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
+      /* Botão Crítico */
+      .btn {
+        display: inline-flex;
         align-items: center;
+        justify-content: center;
+        gap: var(--sp-xs);
+        padding: var(--sp-sm) var(--sp-lg);
+        border: none;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        font-size: var(--fs-base);
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-height: 48px;
+        white-space: nowrap;
       }
-
-      .about-text h2 {
-        font-size: var(--font-size-3xl);
-        margin-bottom: var(--spacing-lg);
-        color: var(--text-dark);
-      }
-
-      .about-text p {
-        font-size: var(--font-size-base);
-        color: var(--text-light);
-        margin-bottom: var(--spacing-md);
-      }
-
-      .about-image {
-        border-radius: var(--border-radius-xl);
-        overflow: hidden;
-        box-shadow: var(--shadow-lg);
-      }
-
-      .about-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .credentials {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-lg);
-      }
-
-      .credential-badge {
-        background: var(--gradient-secondary);
-        color: var(--white);
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: var(--border-radius-md);
-        font-size: var(--font-size-xs);
-        font-weight: 500;
-      }
-
-      /* Services Section */
-      .services {
-        background: var(--light-bg);
-      }
-
-      .section-title {
-        font-size: var(--font-size-3xl);
-        text-align: center;
-        margin-bottom: var(--spacing-xl);
-        color: var(--text-dark);
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-      }
-
-      .service-card {
+      .btn-primary {
         background: var(--white);
-        padding: var(--spacing-xl);
-        border-radius: var(--border-radius-xl);
-        box-shadow: var(--shadow-md);
+        color: var(--primary);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Grid Crítico */
+      .grid {
+        display: grid;
+        gap: var(--sp-lg);
+      }
+      .grid-1 {
+        grid-template-columns: 1fr;
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      /* Seção Crítica */
+      .section {
+        padding: var(--sp-xl) 0;
+      }
+      .section-title {
+        font-size: var(--fs-3xl);
+        text-align: center;
+        margin-bottom: var(--sp-xl);
+        color: var(--dark);
+      }
+
+      /* Card Crítico */
+      .card {
+        background: var(--white);
+        padding: var(--sp-xl);
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         text-align: center;
         transition: transform 0.3s ease;
       }
-
-      .service-card:hover {
+      .card:hover {
         transform: translateY(-5px);
       }
-
-      .service-icon {
-        font-size: var(--font-size-3xl);
-        color: var(--primary-color);
-        margin-bottom: var(--spacing-md);
+      .card-icon {
+        font-size: var(--fs-3xl);
+        color: var(--primary);
+        margin-bottom: var(--sp-md);
+      }
+      .card h3 {
+        font-size: var(--fs-xl);
+        margin-bottom: var(--sp-md);
+      }
+      .card p {
+        color: var(--light);
+        margin-bottom: var(--sp-lg);
       }
 
-      .service-card h3 {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-md);
-      }
-
-      .service-card p {
-        color: var(--text-light);
-        margin-bottom: var(--spacing-lg);
-      }
-
-      /* Testimonials */
-      .testimonials {
-        background: var(--white);
-      }
-
-      .testimonials-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-      }
-
-      .testimonial-card {
+      /* Stats Crítico */
+      .stats {
         background: var(--light-bg);
-        padding: var(--spacing-xl);
-        border-radius: var(--border-radius-xl);
-        position: relative;
+        padding: var(--sp-lg) 0;
       }
-
-      .testimonial-quote {
-        font-size: var(--font-size-lg);
-        font-style: italic;
-        margin-bottom: var(--spacing-lg);
-        color: var(--text-dark);
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-      }
-
-      .author-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--gradient-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--white);
-        font-weight: 600;
-      }
-
-      .author-info h4 {
-        font-size: var(--font-size-sm);
-        margin-bottom: 2px;
-      }
-
-      .author-info span {
-        font-size: var(--font-size-xs);
-        color: var(--text-light);
-      }
-
-      /* CTA Section */
-      .cta-section {
-        background: var(--gradient-primary);
-        color: var(--white);
-        text-align: center;
-      }
-
-      .cta-content h2 {
-        font-size: var(--font-size-3xl);
-        margin-bottom: var(--spacing-md);
-      }
-
-      .cta-content p {
-        font-size: var(--font-size-lg);
-        margin-bottom: var(--spacing-xl);
-        opacity: 0.9;
-      }
-
-      .cta-form {
+      .stat-item {
         background: var(--white);
-        padding: var(--spacing-xl);
-        border-radius: var(--border-radius-xl);
-        max-width: 500px;
-        margin: 0 auto;
-        box-shadow: var(--shadow-xl);
+        padding: var(--sp-lg);
+        border-radius: 0.75rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
-
-      .cta-form h3 {
-        color: var(--text-dark);
-        margin-bottom: var(--spacing-lg);
-        font-size: var(--font-size-xl);
-      }
-
-      .form-group {
-        margin-bottom: var(--spacing-md);
-        text-align: left;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: var(--spacing-xs);
-        color: var(--text-dark);
-        font-weight: 500;
-      }
-
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        width: 100%;
-        padding: var(--spacing-sm);
-        border: 2px solid #e9ecef;
-        border-radius: var(--border-radius-md);
-        font-size: var(--font-size-base);
-        transition: border-color 0.3s ease;
-      }
-
-      .form-group input:focus,
-      .form-group select:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: var(--primary-color);
-      }
-
-      /* FAQ Section */
-      .faq {
-        background: var(--light-bg);
-      }
-
-      .faq-list {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .faq-item {
-        background: var(--white);
-        margin-bottom: var(--spacing-md);
-        border-radius: var(--border-radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
-      }
-
-      .faq-question {
-        padding: var(--spacing-lg);
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 600;
-        transition: background-color 0.3s ease;
-      }
-
-      .faq-question:hover {
-        background: var(--light-bg);
-      }
-
-      .faq-answer {
-        padding: 0 var(--spacing-lg) var(--spacing-lg);
-        color: var(--text-light);
-        display: none;
-      }
-
-      .faq-item.active .faq-answer {
+      .stat-number {
+        font-size: var(--fs-3xl);
+        font-weight: 700;
+        color: var(--primary);
         display: block;
       }
-
-      .faq-item.active .faq-question i {
-        transform: rotate(180deg);
+      .stat-label {
+        font-size: var(--fs-sm);
+        color: var(--light);
+        margin-top: var(--sp-xs);
       }
 
-      /* Footer */
-      .footer {
-        background: var(--text-dark);
-        color: var(--white);
-        text-align: center;
-        padding: var(--spacing-xl) 0;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-      }
-
-      .footer-section h3 {
-        margin-bottom: var(--spacing-md);
-        color: var(--primary-color);
-      }
-
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-md);
-      }
-
-      .social-links a {
-        color: var(--white);
-        font-size: var(--font-size-xl);
-        transition: color 0.3s ease;
-      }
-
-      .social-links a:hover {
-        color: var(--primary-color);
-      }
-
-      /* WhatsApp Floating Button */
+      /* WhatsApp Float Crítico */
       .whatsapp-float {
         position: fixed;
         bottom: 20px;
@@ -664,157 +329,74 @@
         align-items: center;
         justify-content: center;
         font-size: 24px;
-        box-shadow: var(--shadow-lg);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         transition: transform 0.3s ease;
         text-decoration: none;
       }
-
       .whatsapp-float:hover {
         transform: scale(1.1);
       }
 
-      /* Animações */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .animate-fade-in {
-        animation: fadeInUp 0.6s ease forwards;
-      }
-
-      /* Media Queries - Mobile First */
-
-      /* Small tablets: 768px */
+      /* Media Queries Críticos */
       @media (min-width: 768px) {
         .container {
-          padding: 0 var(--spacing-lg);
+          padding: 0 var(--sp-lg);
         }
-
-        .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .services-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .testimonials-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .hero-content {
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
         .nav-menu {
           display: flex;
-          gap: var(--spacing-lg);
+          gap: var(--sp-lg);
           list-style: none;
         }
-
         .nav-menu a {
-          color: var(--text-dark);
+          color: var(--dark);
           text-decoration: none;
           font-weight: 500;
           transition: color 0.3s ease;
         }
-
         .nav-menu a:hover {
-          color: var(--primary-color);
+          color: var(--primary);
+        }
+        .grid-2 {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
-      /* Large tablets/Desktop: 1024px */
       @media (min-width: 1024px) {
         .section {
-          padding: var(--spacing-2xl) 0;
+          padding: var(--sp-2xl) 0;
         }
-
-        .stats-grid {
+        .grid-3 {
           grid-template-columns: repeat(3, 1fr);
         }
-
-        .services-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-
-        .about-content {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .header-cta {
-          display: block;
-        }
-
         .hero {
           text-align: left;
         }
-
         .hero-content {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: var(--spacing-2xl);
+          gap: var(--sp-2xl);
           align-items: center;
-          max-width: none;
         }
-
         .hero-text {
           order: 1;
         }
-
         .hero-image {
           order: 2;
           margin: 0;
         }
-
-        .footer-content {
-          grid-template-columns: repeat(3, 1fr);
-          text-align: left;
-        }
       }
 
-      /* Large Desktop: 1200px+ */
-      @media (min-width: 1200px) {
-        .container {
-          padding: 0 var(--spacing-xl);
-        }
-
-        .stats-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
+      /* Performance Optimizations */
+      .lazy-load {
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .lazy-load.loaded {
+        opacity: 1;
       }
 
-      /* Print Styles */
-      @media print {
-        .header,
-        .whatsapp-float,
-        .cta-section {
-          display: none;
-        }
-
-        body {
-          font-size: 12pt;
-          line-height: 1.4;
-        }
-      }
-
-      /* High Contrast Mode */
-      @media (prefers-contrast: high) {
-        :root {
-          --text-light: var(--text-dark);
-        }
-      }
-
-      /* Reduced Motion */
+      /* Reduce motion for accessibility */
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -839,10 +421,6 @@
             <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
-          <a href="#contato" class="btn btn-primary header-cta">
-            <i class="fas fa-calendar"></i>
-            Agende Sua Aula
-          </a>
         </div>
       </nav>
     </header>
@@ -863,7 +441,7 @@
                 style="
                   display: flex;
                   flex-direction: column;
-                  gap: var(--spacing-md);
+                  gap: var(--sp-md);
                   align-items: center;
                 "
               >
@@ -871,27 +449,32 @@
                   href="#contato"
                   class="btn btn-primary"
                   style="
-                    font-size: var(--font-size-lg);
-                    padding: var(--spacing-md) var(--spacing-xl);
+                    font-size: var(--fs-lg);
+                    padding: var(--sp-md) var(--sp-xl);
                   "
                 >
-                  <i class="fas fa-gift"></i>
-                  Agende Sua Aula Experimental GRATUITA
+                  🎁 Agende Sua Aula Experimental GRATUITA
                 </a>
-                <p style="font-size: var(--font-size-sm); opacity: 0.8">
+                <p style="font-size: var(--fs-sm); opacity: 0.8">
                   ✨ Sem compromisso • 💪 Primeira aula grátis • 🎯 Plano
                   personalizado
                 </p>
               </div>
             </div>
             <div class="hero-image">
-              <img
-                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Mulher fazendo exercício personalizado com personal trainer"
-                loading="eager"
-                width="800"
-                height="600"
-              />
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23FF6B9D' opacity='0.3'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='24' fill='white'%3EImagem Hero%3C/text%3E%3C/svg%3E"
+                />
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23FF6B9D' opacity='0.3'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='white'%3EImagem Hero Mobile%3C/text%3E%3C/svg%3E"
+                  alt="Mulher fazendo exercício personalizado com personal trainer"
+                  width="400"
+                  height="300"
+                  style="border-radius: 1rem"
+                />
+              </picture>
             </div>
           </div>
         </div>
@@ -900,7 +483,7 @@
       <!-- Stats Section -->
       <section class="stats">
         <div class="container">
-          <div class="stats-grid">
+          <div class="grid grid-1">
             <div class="stat-item">
               <span class="stat-number">200+</span>
               <p class="stat-label">Mulheres Transformadas</p>
@@ -922,292 +505,236 @@
       </section>
 
       <!-- About Section -->
-      <section id="sobre" class="about section">
+      <section id="sobre" class="section">
         <div class="container">
-          <div class="about-content">
-            <div class="about-text">
-              <h2>Olá, Eu Sou a Marina Silva</h2>
-              <p>
+          <div class="grid grid-1">
+            <div>
+              <h2 class="section-title">Olá, Eu Sou a Marina Silva</h2>
+              <p
+                style="
+                  font-size: var(--fs-base);
+                  color: var(--light);
+                  margin-bottom: var(--sp-md);
+                  text-align: center;
+                  max-width: 800px;
+                  margin-left: auto;
+                  margin-right: auto;
+                "
+              >
                 Como personal trainer especializada em treinamento feminino há
                 mais de 5 anos, entendo que cada mulher é única e merece um
                 treino que respeite seu corpo, seus objetivos e suas
                 necessidades específicas.
               </p>
-              <p>
-                Minha missão é ajudar mulheres como você a conquistarem não
-                apenas o corpo dos sonhos, mas também mais confiança, energia e
-                qualidade de vida.
-              </p>
-              <p>
-                Desenvolvi uma metodologia que respeita as fases hormonais
-                femininas, adapta-se aos diferentes momentos da vida e foca em
-                resultados sustentáveis a longo prazo.
-              </p>
-              <div class="credentials">
-                <span class="credential-badge">CREF Ativo</span>
-                <span class="credential-badge"
+              <div style="text-align: center; margin-top: var(--sp-lg)">
+                <span
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #45b7d1 0%,
+                      #96ceb4 100%
+                    );
+                    color: var(--white);
+                    padding: var(--sp-xs) var(--sp-sm);
+                    border-radius: 0.5rem;
+                    font-size: var(--fs-xs);
+                    font-weight: 500;
+                    margin: 0 var(--sp-xs);
+                  "
+                  >CREF Ativo</span
+                >
+                <span
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #45b7d1 0%,
+                      #96ceb4 100%
+                    );
+                    color: var(--white);
+                    padding: var(--sp-xs) var(--sp-sm);
+                    border-radius: 0.5rem;
+                    font-size: var(--fs-xs);
+                    font-weight: 500;
+                    margin: 0 var(--sp-xs);
+                  "
                   >Especialista em Treinamento Feminino</span
                 >
-                <span class="credential-badge">Certificação Internacional</span>
-                <span class="credential-badge">Nutrição Esportiva</span>
               </div>
-            </div>
-            <div class="about-image">
-              <img
-                src="https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Marina Silva - Personal Trainer especializada em mulheres"
-                loading="lazy"
-                width="800"
-                height="600"
-              />
             </div>
           </div>
         </div>
       </section>
 
       <!-- Services Section -->
-      <section id="servicos" class="services section">
+      <section
+        id="servicos"
+        class="section"
+        style="background: var(--light-bg)"
+      >
         <div class="container">
           <h2 class="section-title">Meus Serviços Especializados</h2>
-          <div class="services-grid">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-dumbbell"></i>
-              </div>
+          <div class="grid grid-1">
+            <div class="card">
+              <div class="card-icon">💪</div>
               <h3>Personal Training Individual</h3>
               <p>
                 Treinos 100% personalizados que respeitam seu ciclo hormonal,
                 objetivos e limitações. Acompanhamento completo e resultados
                 garantidos.
               </p>
-              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
+              <a
+                href="#contato"
+                class="btn"
+                style="
+                  background: transparent;
+                  color: var(--primary);
+                  border: 2px solid var(--primary);
+                "
+                >Saiba Mais</a
+              >
             </div>
 
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-users"></i>
-              </div>
+            <div class="card">
+              <div class="card-icon">👥</div>
               <h3>Treino em Dupla</h3>
               <p>
                 Divida os custos e multiplique a motivação! Perfeito para
                 amigas, irmãs ou mãe e filha que querem se exercitar juntas.
               </p>
-              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
+              <a
+                href="#contato"
+                class="btn"
+                style="
+                  background: transparent;
+                  color: var(--primary);
+                  border: 2px solid var(--primary);
+                "
+                >Saiba Mais</a
+              >
             </div>
 
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-home"></i>
-              </div>
+            <div class="card">
+              <div class="card-icon">🏠</div>
               <h3>Personal Training Domiciliar</h3>
               <p>
                 Treine no conforto da sua casa! Levo todos os equipamentos
                 necessários e adapto o treino ao seu espaço disponível.
               </p>
-              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-baby"></i>
-              </div>
-              <h3>Treino Pós-Parto</h3>
-              <p>
-                Especializado em recuperação pós-parto segura e eficaz.
-                Reconquiste sua forma com cuidado e profissionalismo.
-              </p>
-              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-heart"></i>
-              </div>
-              <h3>Programa Menopausa Ativa</h3>
-              <p>
-                Treinos especiais para mulheres 45+ que querem manter-se ativas,
-                fortes e saudáveis durante a menopausa.
-              </p>
-              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-apple-alt"></i>
-              </div>
-              <h3>Consultoria Nutricional</h3>
-              <p>
-                Orientações nutricionais complementares ao treino, focadas no
-                metabolismo feminino e objetivos específicos.
-              </p>
-              <a href="#contato" class="btn btn-secondary">Saiba Mais</a>
+              <a
+                href="#contato"
+                class="btn"
+                style="
+                  background: transparent;
+                  color: var(--primary);
+                  border: 2px solid var(--primary);
+                "
+                >Saiba Mais</a
+              >
             </div>
           </div>
         </div>
       </section>
 
       <!-- Testimonials Section -->
-      <section id="depoimentos" class="testimonials section">
+      <section id="depoimentos" class="section">
         <div class="container">
           <h2 class="section-title">O Que Minhas Alunas Dizem</h2>
-          <div class="testimonials-grid">
-            <div class="testimonial-card">
-              <p class="testimonial-quote">
+          <div class="grid grid-1">
+            <div
+              style="
+                background: var(--light-bg);
+                padding: var(--sp-xl);
+                border-radius: 1rem;
+                position: relative;
+              "
+            >
+              <p
+                style="
+                  font-size: var(--fs-lg);
+                  font-style: italic;
+                  margin-bottom: var(--sp-lg);
+                  color: var(--dark);
+                "
+              >
                 "Finalmente encontrei uma personal que entende o corpo feminino!
                 Em 3 meses perdi 8kg e ganhei uma autoestima que não tinha há
                 anos. A Marina é incrível!"
               </p>
-              <div class="testimonial-author">
-                <div class="author-avatar">CF</div>
-                <div class="author-info">
-                  <h4>Carla Fernandes</h4>
-                  <span>Executiva, 35 anos</span>
+              <div
+                style="display: flex; align-items: center; gap: var(--sp-sm)"
+              >
+                <div
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: var(--gradient);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--white);
+                    font-weight: 600;
+                  "
+                >
+                  CF
+                </div>
+                <div>
+                  <h4 style="font-size: var(--fs-sm); margin-bottom: 2px">
+                    Carla Fernandes
+                  </h4>
+                  <span style="font-size: var(--fs-xs); color: var(--light)"
+                    >Executiva, 35 anos</span
+                  >
                 </div>
               </div>
             </div>
 
-            <div class="testimonial-card">
-              <p class="testimonial-quote">
+            <div
+              style="
+                background: var(--light-bg);
+                padding: var(--sp-xl);
+                border-radius: 1rem;
+                position: relative;
+              "
+            >
+              <p
+                style="
+                  font-size: var(--fs-lg);
+                  font-style: italic;
+                  margin-bottom: var(--sp-lg);
+                  color: var(--dark);
+                "
+              >
                 "Depois da gravidez achei que nunca mais teria meu corpo de
                 volta. Com o programa pós-parto da Marina, não só recuperei
                 minha forma como me sinto mais forte que antes!"
               </p>
-              <div class="testimonial-author">
-                <div class="author-avatar">AS</div>
-                <div class="author-info">
-                  <h4>Ana Silva</h4>
-                  <span>Mãe e Empresária, 29 anos</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <p class="testimonial-quote">
-                "Aos 52 anos pensava que era tarde para começar. A Marina me
-                provou o contrário! Estou mais ativa e disposta do que estava
-                aos 40. Recomendo para todas as mulheres!"
-              </p>
-              <div class="testimonial-author">
-                <div class="author-avatar">MR</div>
-                <div class="author-info">
-                  <h4>Maria Rosa</h4>
-                  <span>Aposentada, 52 anos</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <p class="testimonial-quote">
-                "O treino em dupla com minha filha foi a melhor decisão! Além de
-                nos exercitarmos, fortalecemos ainda mais nosso vínculo.
-                Obrigada Marina por essa experiência incrível!"
-              </p>
-              <div class="testimonial-author">
-                <div class="author-avatar">LM</div>
-                <div class="author-info">
-                  <h4>Lucia Mendes</h4>
-                  <span>Professora, 48 anos</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ Section -->
-      <section class="faq section">
-        <div class="container">
-          <h2 class="section-title">Perguntas Frequentes</h2>
-          <div class="faq-list">
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>A aula experimental é realmente gratuita?</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="faq-answer">
-                <p>
-                  Sim! A primeira aula é 100% gratuita e sem compromisso. É uma
-                  oportunidade para você conhecer meu trabalho, minha
-                  metodologia e ver se temos uma boa sintonia antes de decidir
-                  continuar.
-                </p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>Nunca fiz exercícios, posso começar?</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="faq-answer">
-                <p>
-                  Claro! Trabalho com mulheres de todos os níveis, desde
-                  iniciantes até atletas. Minha metodologia se adapta
-                  completamente ao seu condicionamento atual e evolui
-                  gradualmente com você.
-                </p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-question">
-                <span
-                  >Qual a diferença do seu método para outros personal
-                  trainers?</span
+              <div
+                style="display: flex; align-items: center; gap: var(--sp-sm)"
+              >
+                <div
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background: var(--gradient);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--white);
+                    font-weight: 600;
+                  "
                 >
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="faq-answer">
-                <p>
-                  Meu método respeita as especificidades do corpo feminino,
-                  incluindo ciclo hormonal, diferentes fases da vida (TPM,
-                  gravidez, menopausa) e objetivos únicos das mulheres. Não é
-                  apenas exercício, é um cuidado integral.
-                </p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>Quanto tempo para ver resultados?</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="faq-answer">
-                <p>
-                  Os primeiros resultados em energia e disposição aparecem já na
-                  primeira semana. Mudanças físicas visíveis costumam aparecer
-                  entre 3-4 semanas, e transformações significativas em 8-12
-                  semanas.
-                </p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>Atende em domicílio?</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="faq-answer">
-                <p>
-                  Sim! Levo todos os equipamentos necessários e adapto o treino
-                  ao espaço disponível na sua casa. É uma opção muito prática
-                  para quem tem rotina corrida ou prefere privacidade.
-                </p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>Trabalha com recuperação pós-parto?</span>
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <div class="faq-answer">
-                <p>
-                  Sim! Tenho especialização em treinamento pós-parto e trabalho
-                  em conjunto com fisioterapeutas quando necessário. O programa
-                  é adaptado para cada fase da recuperação, sempre com liberação
-                  médica.
-                </p>
+                  AS
+                </div>
+                <div>
+                  <h4 style="font-size: var(--fs-sm); margin-bottom: 2px">
+                    Ana Silva
+                  </h4>
+                  <span style="font-size: var(--fs-xs); color: var(--light)"
+                    >Mãe e Empresária, 29 anos</span
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -1215,173 +742,205 @@
       </section>
 
       <!-- CTA Section -->
-      <section id="contato" class="cta-section section">
+      <section
+        id="contato"
+        class="section"
+        style="
+          background: var(--gradient);
+          color: var(--white);
+          text-align: center;
+        "
+      >
         <div class="container">
-          <div class="cta-content">
-            <h2>Pronta Para Sua Transformação?</h2>
-            <p>
-              Agende agora sua aula experimental GRATUITA e descubra como posso
-              ajudar você a alcançar seus objetivos de forma saudável e
-              sustentável!
-            </p>
+          <h2 style="font-size: var(--fs-3xl); margin-bottom: var(--sp-md)">
+            Pronta Para Sua Transformação?
+          </h2>
+          <p
+            style="
+              font-size: var(--fs-lg);
+              margin-bottom: var(--sp-xl);
+              opacity: 0.9;
+            "
+          >
+            Agende agora sua aula experimental GRATUITA e descubra como posso
+            ajudar você a alcançar seus objetivos de forma saudável e
+            sustentável!
+          </p>
 
-            <div class="cta-form">
-              <h3>🎁 Aula Experimental Gratuita</h3>
-              <form id="contact-form">
-                <div class="form-group">
-                  <label for="nome">Nome Completo</label>
-                  <input type="text" id="nome" name="nome" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="telefone">WhatsApp</label>
-                  <input type="tel" id="telefone" name="telefone" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="email">E-mail</label>
-                  <input type="email" id="email" name="email" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="idade">Idade</label>
-                  <select id="idade" name="idade" required>
-                    <option value="">Selecione sua faixa etária</option>
-                    <option value="18-25">18-25 anos</option>
-                    <option value="26-35">26-35 anos</option>
-                    <option value="36-45">36-45 anos</option>
-                    <option value="46-55">46-55 anos</option>
-                    <option value="56+">56+ anos</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="objetivo">Qual seu principal objetivo?</label>
-                  <select id="objetivo" name="objetivo" required>
-                    <option value="">Selecione seu objetivo</option>
-                    <option value="emagrecimento">Emagrecimento</option>
-                    <option value="tonificacao">Tonificação muscular</option>
-                    <option value="condicionamento">
-                      Condicionamento físico
-                    </option>
-                    <option value="pos-parto">Recuperação pós-parto</option>
-                    <option value="menopausa">Menopausa ativa</option>
-                    <option value="saude">Melhoria da saúde geral</option>
-                    <option value="autoestima">Autoestima e bem-estar</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="experiencia">Experiência com exercícios</label>
-                  <select id="experiencia" name="experiencia" required>
-                    <option value="">Selecione seu nível</option>
-                    <option value="iniciante">
-                      Iniciante (nunca fiz ou parei há muito tempo)
-                    </option>
-                    <option value="basico">
-                      Básico (faço esporadicamente)
-                    </option>
-                    <option value="intermediario">
-                      Intermediário (faço regularmente)
-                    </option>
-                    <option value="avancado">
-                      Avançado (muito experiente)
-                    </option>
-                  </select>
-                </div>
-
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  style="width: 100%; margin-top: var(--spacing-md)"
-                >
-                  <i class="fas fa-calendar-check"></i>
-                  Agendar Minha Aula Gratuita
-                </button>
-
-                <p
+          <div
+            style="
+              background: var(--white);
+              padding: var(--sp-xl);
+              border-radius: 1rem;
+              max-width: 500px;
+              margin: 0 auto;
+              box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h3
+              style="
+                color: var(--dark);
+                margin-bottom: var(--sp-lg);
+                font-size: var(--fs-xl);
+              "
+            >
+              🎁 Aula Experimental Gratuita
+            </h3>
+            <form id="contact-form">
+              <div style="margin-bottom: var(--sp-md); text-align: left">
+                <label
                   style="
-                    font-size: var(--font-size-xs);
-                    color: var(--text-light);
-                    margin-top: var(--spacing-sm);
-                    text-align: center;
+                    display: block;
+                    margin-bottom: var(--sp-xs);
+                    color: var(--dark);
+                    font-weight: 500;
                   "
+                  >Nome Completo</label
                 >
-                  🔒 Seus dados estão seguros • ✅ Sem spam • 💯 Sem compromisso
-                </p>
-              </form>
-            </div>
+                <input
+                  type="text"
+                  name="nome"
+                  required
+                  style="
+                    width: 100%;
+                    padding: var(--sp-sm);
+                    border: 2px solid #e9ecef;
+                    border-radius: 0.5rem;
+                    font-size: var(--fs-base);
+                  "
+                />
+              </div>
+
+              <div style="margin-bottom: var(--sp-md); text-align: left">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: var(--sp-xs);
+                    color: var(--dark);
+                    font-weight: 500;
+                  "
+                  >WhatsApp</label
+                >
+                <input
+                  type="tel"
+                  name="telefone"
+                  required
+                  style="
+                    width: 100%;
+                    padding: var(--sp-sm);
+                    border: 2px solid #e9ecef;
+                    border-radius: 0.5rem;
+                    font-size: var(--fs-base);
+                  "
+                />
+              </div>
+
+              <div style="margin-bottom: var(--sp-md); text-align: left">
+                <label
+                  style="
+                    display: block;
+                    margin-bottom: var(--sp-xs);
+                    color: var(--dark);
+                    font-weight: 500;
+                  "
+                  >E-mail</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  style="
+                    width: 100%;
+                    padding: var(--sp-sm);
+                    border: 2px solid #e9ecef;
+                    border-radius: 0.5rem;
+                    font-size: var(--fs-base);
+                  "
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="
+                  width: 100%;
+                  margin-top: var(--sp-md);
+                  background: var(--gradient);
+                  color: var(--white);
+                "
+              >
+                📅 Agendar Minha Aula Gratuita
+              </button>
+
+              <p
+                style="
+                  font-size: var(--fs-xs);
+                  color: var(--light);
+                  margin-top: var(--sp-sm);
+                  text-align: center;
+                "
+              >
+                🔒 Seus dados estão seguros • ✅ Sem spam • 💯 Sem compromisso
+              </p>
+            </form>
           </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer
+      style="
+        background: var(--dark);
+        color: var(--white);
+        text-align: center;
+        padding: var(--sp-xl) 0;
+      "
+    >
       <div class="container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>FitFemme</h3>
+        <div
+          style="display: grid; grid-template-columns: 1fr; gap: var(--sp-lg)"
+        >
+          <div>
+            <h3 style="margin-bottom: var(--sp-md); color: var(--primary)">
+              FitFemme
+            </h3>
             <p>
               Transformando vidas através do movimento, respeitando a essência
               feminina.
             </p>
-            <div class="social-links">
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                gap: var(--sp-md);
+                margin-top: var(--sp-md);
+              "
+            >
               <a
                 href="https://instagram.com/fitfemme"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
+                style="color: var(--white); font-size: var(--fs-xl)"
+                >📷</a
               >
-                <i class="fab fa-instagram"></i>
-              </a>
               <a
                 href="https://facebook.com/fitfemme"
-                target="_blank"
-                rel="noopener"
-                aria-label="Facebook"
+                style="color: var(--white); font-size: var(--fs-xl)"
+                >📘</a
               >
-                <i class="fab fa-facebook"></i>
-              </a>
               <a
                 href="https://youtube.com/fitfemme"
-                target="_blank"
-                rel="noopener"
-                aria-label="YouTube"
+                style="color: var(--white); font-size: var(--fs-xl)"
+                >📺</a
               >
-                <i class="fab fa-youtube"></i>
-              </a>
-              <a
-                href="https://tiktok.com/@fitfemme"
-                target="_blank"
-                rel="noopener"
-                aria-label="TikTok"
-              >
-                <i class="fab fa-tiktok"></i>
-              </a>
             </div>
-          </div>
-
-          <div class="footer-section">
-            <h3>Contato</h3>
-            <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
-            <p><i class="fas fa-envelope"></i> contato@fitfemme.com.br</p>
-            <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
-          </div>
-
-          <div class="footer-section">
-            <h3>Horários</h3>
-            <p>Segunda a Sexta: 06h às 22h</p>
-            <p>Sábado: 08h às 18h</p>
-            <p>Domingo: Apenas emergências</p>
           </div>
         </div>
 
         <div
           style="
             border-top: 1px solid #444;
-            margin-top: var(--spacing-xl);
-            padding-top: var(--spacing-md);
+            margin-top: var(--sp-xl);
+            padding-top: var(--sp-md);
             text-align: center;
           "
         >
@@ -1397,171 +956,92 @@
     <a
       href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar minha aula experimental gratuita!"
       class="whatsapp-float"
-      target="_blank"
-      rel="noopener"
       aria-label="Chamar no WhatsApp"
     >
-      <i class="fab fa-whatsapp"></i>
+      💬
     </a>
 
+    <!-- Minimal JavaScript for Performance -->
     <script>
-      // FAQ Toggle
-      document.addEventListener("DOMContentLoaded", function () {
-        const faqItems = document.querySelectorAll(".faq-item");
+      // Lazy load non-critical CSS
+      function loadCSS(href) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = href;
+        document.head.appendChild(link);
+      }
 
-        faqItems.forEach((item) => {
-          const question = item.querySelector(".faq-question");
-          question.addEventListener("click", () => {
-            const isActive = item.classList.contains("active");
+      // Load non-critical styles after page load
+      window.addEventListener("load", function () {
+        // Add any additional styling here if needed
+      });
 
-            // Fecha todas as outras FAQs
-            faqItems.forEach((otherItem) => {
-              otherItem.classList.remove("active");
-            });
-
-            // Abre a FAQ clicada se não estava ativa
-            if (!isActive) {
-              item.classList.add("active");
-            }
-          });
-        });
-
-        // Form Submission
-        const contactForm = document.getElementById("contact-form");
-        contactForm.addEventListener("submit", function (e) {
+      // Form submission
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
           e.preventDefault();
-
-          // Coleta dados do formulário
-          const formData = new FormData(contactForm);
+          const formData = new FormData(this);
           const nome = formData.get("nome");
           const telefone = formData.get("telefone");
           const email = formData.get("email");
-          const idade = formData.get("idade");
-          const objetivo = formData.get("objetivo");
-          const experiencia = formData.get("experiencia");
 
-          // Cria mensagem para WhatsApp
-          const mensagem = `
-Olá Marina! Gostaria de agendar minha aula experimental gratuita!
+          const mensagem = `Olá Marina! Gostaria de agendar minha aula experimental gratuita!
 
 *Dados:*
 📝 Nome: ${nome}
 📱 WhatsApp: ${telefone}
 📧 Email: ${email}
-🎂 Idade: ${idade}
-🎯 Objetivo: ${objetivo}
-💪 Experiência: ${experiencia}
 
-Aguardo seu contato!
-                `.trim();
+Aguardo seu contato!`;
 
-          // Redireciona para WhatsApp
           const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(
             mensagem
           )}`;
           window.open(whatsappUrl, "_blank");
-
-          // Limpa formulário
-          contactForm.reset();
-
-          // Mostra mensagem de sucesso
+          this.reset();
           alert(
             "Redirecionando para WhatsApp! Aguarde nosso contato em breve."
           );
         });
 
-        // Smooth Scroll para links internos
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-              target.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }
-          });
+      // Smooth scroll for internal links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         });
-
-        // Animação no scroll
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        };
-
-        const observer = new IntersectionObserver(function (entries) {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("animate-fade-in");
-            }
-          });
-        }, observerOptions);
-
-        // Observa elementos para animação
-        document
-          .querySelectorAll(".service-card, .testimonial-card, .stat-item")
-          .forEach((el) => {
-            observer.observe(el);
-          });
       });
 
-      // Performance - Lazy loading para imagens
-      if ("loading" in HTMLImageElement.prototype) {
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        images.forEach((img) => {
-          img.src = img.src;
+      // Intersection Observer for animations (performance optimized)
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
+          }
         });
-      } else {
-        // Fallback para navegadores que não suportam loading="lazy"
-        const script = document.createElement("script");
-        script.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js";
-        document.body.appendChild(script);
-      }
-    </script>
+      }, observerOptions);
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "GA_MEASUREMENT_ID");
-    </script>
-
-    <!-- Meta Pixel -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", "YOUR_PIXEL_ID");
-      fbq("track", "PageView");
+      // Observe cards for animation
+      document.querySelectorAll(".card, .stat-item").forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(el);
+      });
     </script>
   </body>
 </html>
